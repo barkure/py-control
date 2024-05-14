@@ -61,15 +61,14 @@ def nyquist_plot(sys):
 
 # Define Transfer Function
 # K, Numerator and Denominator
-K = 52
+K = 1
 
 num = [
-    [1]
+    [16]
 ]
 
 den = [
-    [1, 0],
-    [1, 1]
+    [1, 10, 16]
 ]
 
 num[0] = [K * i for i in num[0]]
@@ -80,8 +79,8 @@ den_conv = reduce(np.convolve, den)
 sys = ctrl.TransferFunction(num_conv, den_conv)
 
 # Draw
-step_response(sys, np.linspace(0, 2, 1000))
-impulse_response(sys, np.linspace(0, 2, 1000))
+step_response(sys, np.linspace(0, 5, 1000))
+impulse_response(sys, np.linspace(0, 5, 1000))
 root_locus(sys)
 bode_plot(sys)
 nyquist_plot(sys)
